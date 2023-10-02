@@ -1,0 +1,70 @@
+<!-- Product Details -->
+<div class="container">
+  <div class="product-details">
+    <h2>{{ product.productName }}</h2>
+    <p>Brand: {{ product?.productBrand }}</p>
+    <p>Code: {{ product?.productCode }}</p>
+    <p>Price: {{ product?.productPrice }}</p>
+    <p>Description: {{ product?.productDescription }}</p>
+    <p>
+      <ng-container *ngIf="avgRating > 0; else noRatingMessage">
+        Average Rating:
+        <span class="star" [class.full]="avgRating >= 1"></span>
+        <span class="star" [class.full]="avgRating >= 2"></span>
+        <span class="star" [class.full]="avgRating >= 3"></span>
+        <span class="star" [class.full]="avgRating >= 4"></span>
+        <span class="star" [class.full]="avgRating >= 5"></span>
+      </ng-container>
+    </p>
+    <ng-template #noRatingMessage>
+      No rating available
+    </ng-template>
+  </div>
+  <!-- Approved Reviews -->
+  <div *ngIf="approvedReviews && approvedReviews.length > 0" class="approved-reviews">
+    <h3>Approved Reviews</h3>
+    <div *ngFor="let review of approvedReviews">
+      <div class="review-item">
+        <p>{{ review.description }}</p>
+        <div class="rating">
+          <span class="star" [class.full]="review.rating >= 1"></span>
+          <span class="star" [class.full]="review.rating >= 2"></span>
+          <span class="star" [class.full]="review.rating >= 3"></span>
+          <span class="star" [class.full]="review.rating >= 4"></span>
+          <span class="star" [class.full]="review.rating >= 5"></span>
+        </div>
+        <p>Posted by: {{ review.user.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="approvedReviews && approvedReviews.length === 0" class="approved-reviews">
+    <p>No reviews till now</p>
+  </div>
+
+  <div class="add-review" *ngIf="!isAdmin">
+    <h3>Add Review</h3>
+    <div>
+      <textarea [(ngModel)]="description" placeholder="Review description" required (blur)="validateDescription()"
+        [ngClass]="{ 'error': descriptionTouched && descriptionInvalid }"></textarea>
+      <p class="error-message" *ngIf="descriptionTouched && descriptionInvalid">Only 20 - 400 characters are allowed</p>
+
+      <div class="star-rating">
+        <span class="star" [class.full]="rating >= 1" (click)="setRating(1)"></span>
+        <span class="star" [class.full]="rating >= 2" (click)="setRating(2)"></span>
+        <span class="star" [class.full]="rating >= 3" (click)="setRating(3)"></span>
+        <span class="star" [class.full]="rating >= 4" (click)="setRating(4)"></span>
+        <span class="star" [class.full]="rating === 5" (click)="setRating(5)"></span>
+      </div>
+
+      <p class="error-message" *ngIf="ratingTouched && ratingInvalid">Rating should be between 0 and 5</p>
+    </div>
+
+  </div>
+
+  <!-- Buttons -->
+  <div class="buttons" *ngIf="!isAdmin">
+    <button [disabled]="!(description && rating >= 1 && rating <= 5)" (click)="addReview()">Submit Review</button>
+    <button (click)="goBack()">Back</button>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<body>
+    <div class="pure-body">
+        <div class="container">
+            <h2 class="text-center">Add Product</h2>
+            <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+                <div class="form">
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Product Code</mat-label>
+                            <input matInput type="text" id="productCode" formControlName="productCode">
+                            <mat-error
+                                *ngIf="formControls['productCode'].touched && formControls['productCode'].invalid">
+                                Product code is required
+                            </mat-error>
+                            <mat-error *ngIf="errorMessages['productCode']">
+                                {{ errorMessages['productCode'] }}
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Product Name</mat-label>
+                            <input matInput type="text" id="productName" formControlName="productName">
+                            <mat-error
+                                *ngIf="formControls['productName'].touched && formControls['productName'].invalid">
+                                Product name is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Product Brand</mat-label>
+                            <input matInput type="text" id="productBrand" formControlName="productBrand">
+                            <mat-error
+                                *ngIf="formControls['productBrand'].touched && formControls['productBrand'].invalid">
+                                Product brand is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Product Price</mat-label>
+                            <input matInput type="number" id="productPrice" formControlName="productPrice">
+                            <mat-error
+                                *ngIf="formControls['productPrice'].touched && formControls['productPrice'].hasError('required')">
+                                Product price is required
+                            </mat-error>
+                            <mat-error *ngIf="formControls['productPrice'].hasError('min')">
+                                Product price must be greater than 0
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="form-group">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Product Description</mat-label>
+                            <textarea matInput id="productDescription" formControlName="productDescription"></textarea>
+                            <mat-error
+                                *ngIf="formControls['productDescription'].touched && formControls['productDescription'].hasError('maxlength')">
+                                Maximum 300 words allowed in the description
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-group button-group">
+                    <button mat-raised-button type="submit" class="add" [disabled]="productForm.invalid"
+                        [ngClass]="{'disabled-button': productForm.invalid}">Add Product</button>
+                    <button mat-raised-button type="button" class="warn" (click)="clearForm()">Clear</button>
+                    <button mat-raised-button type="button" class="dashboard-button" (click)="redirectToDashboard()">Go
+                        to
+                        Dashboard</button>
+                </div>
+            </form>
+
+            <div *ngIf="errorMessages['genericError']" class="error-message">
+                {{ errorMessages['genericError'] }}
+            </div>
+
+            <div *ngIf="successMessage" class="success-message">
+                {{ successMessage }}
+            </div>
+
+        </div>
+    </div>
+</body>

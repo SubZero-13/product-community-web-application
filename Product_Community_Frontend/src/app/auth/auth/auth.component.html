@@ -1,0 +1,210 @@
+<!-- <div class="auth-container">
+  <div class="forms-container">
+    <div class="form-content">
+      <form [formGroup]="loginForm" *ngIf="isLoginForm">
+        <h2>Login</h2>
+        <mat-error *ngIf="loginError" class="mat-error">{{ loginError }}</mat-error>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Enter your email" required>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button mat-raised-button (click)="login()"
+            [disabled]="loginForm.invalid || loginForm.pending" class=" mat-raised-button" [ngClass]="{'disabled-button': loginForm.invalid || loginForm.pending}">
+            Login
+          </button>
+          <a (click)="openSignUp()">Don't have an account? Signup here</a>
+        </div>
+      </form>
+
+      <form [formGroup]="signupForm" *ngIf="!isLoginForm">
+        <h2>Signup</h2>
+        <mat-error *ngIf="signupError" class="mat-error">{{ signupError }}</mat-error>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Enter your email" required>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="Enter your first name" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="Enter your last name" required>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm your password"
+                required>
+              <mat-error *ngIf="signupForm?.hasError('passwordMismatch') && signupForm?.get('confirmPassword')?.dirty" class="mat-error">
+                Confirm password does not match
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button mat-raised-button (click)="signup()"
+            [disabled]="signupForm.invalid || signupForm.pending" class=" mat-raised-button" [ngClass]="{'disabled-button': signupForm.invalid || signupForm.pending}">
+            Signup
+          </button>
+          <a (click)="openLogin()">Already have an account? Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="auth-container">
+  <div class="forms-container">
+    <div class="form-content">
+      <form [formGroup]="loginForm" *ngIf="isLoginForm">
+        <h2>Login</h2>
+        <mat-error *ngIf="loginError" class="mat-error">{{ loginError }}</mat-error>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Enter your email" required>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+                Email is required.
+              </mat-error>
+              <mat-error *ngIf="loginForm.get('email')?.hasError('email')">
+                Invalid email format.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+              <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                Password is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button mat-raised-button (click)="login()" [disabled]="loginForm.invalid || loginForm.pending"
+            class=" mat-raised-button" [ngClass]="{'disabled-button': loginForm.invalid || loginForm.pending}">
+            Login
+          </button>
+          <a (click)="openSignUp()">Don't have an account? Signup here</a>
+        </div>
+      </form>
+      <form [formGroup]="signupForm" *ngIf="!isLoginForm">
+        <h2>Signup</h2>
+        <mat-error *ngIf="signupError" class="mat-error">{{ signupError }}</mat-error>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="Enter your email" required>
+              <mat-error
+                *ngIf="signupForm.controls['email'].hasError('required') && signupForm.controls['email'].touched"
+                class="mat-error">
+                {{ getErrorMessage('email', 'required') }}
+              </mat-error>
+              <mat-error *ngIf="signupForm.controls['email'].hasError('email') && signupForm.controls['email'].touched"
+                class="mat-error">
+                Invalid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="Enter your first name" required>
+              <mat-error
+                *ngIf="signupForm.controls['firstName'].hasError('required') && signupForm.controls['firstName'].touched"
+                class="mat-error">
+                {{ getErrorMessage('firstName', 'required') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="Enter your last name" required>
+              <mat-error
+                *ngIf="signupForm.controls['lastName'].hasError('required') && signupForm.controls['lastName'].touched"
+                class="mat-error">
+                {{ getErrorMessage('lastName', 'required') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" placeholder="Enter your password" required>
+              <mat-error
+                *ngIf="signupForm.controls['password'].hasError('minlength') && signupForm.controls['password'].touched"
+                class="mat-error">
+                {{ getErrorMessage('password', 'minlength') }}
+              </mat-error>
+              <mat-error
+                *ngIf="signupForm.controls['password'].hasError('maxlength') && signupForm.controls['password'].touched"
+                class="mat-error">
+                {{ getErrorMessage('password', 'maxlength') }}
+              </mat-error>
+              <mat-error
+                *ngIf="signupForm.controls['password'].hasError('pattern') && signupForm.controls['password'].touched"
+                class="mat-error">
+                {{ getErrorMessage('password', 'pattern') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="input-box">
+            <mat-form-field appearance="fill" class="mat-form-field">
+              <mat-label>Confirm Password</mat-label>
+              <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm your password"
+                required>
+                <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('passwordMismatch')" class="mat-error">
+                  Passwords do not match.
+                </mat-error>                
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button mat-raised-button (click)="signup()" [disabled]="signupForm.invalid || signupForm.pending"
+            class=" mat-raised-button" [ngClass]="{'disabled-button': signupForm.invalid || signupForm.pending}">
+            Signup
+          </button>
+          <a (click)="openLogin()">Already have an account? Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

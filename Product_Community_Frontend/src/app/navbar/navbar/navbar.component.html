@@ -1,0 +1,85 @@
+<mat-toolbar color="primary">
+  <ng-container [ngSwitch]="isLoggedIn">
+    <ng-container *ngSwitchCase="false">
+      <!-- Displayed when no user is logged in -->
+      <span class="cool-icon-text">
+        <mat-icon class="cool-icon">star</mat-icon>
+        <span class="cool-text">Review Verse</span>
+      </span>
+    </ng-container>
+    <ng-container *ngSwitchCase="true">
+      <ng-container *ngIf="!isAdmin; else adminSection">
+        <!-- Displayed when a regular user is logged in -->
+        <div class="user-info">
+          <mat-icon class="icon">account_circle</mat-icon>
+          <span class="username">Welcome, Mr. {{ username }}</span>
+        </div>
+      </ng-container>
+      <ng-template #adminSection>
+        <ng-container *ngSwitchCase="isAdmin">
+          <!-- Displayed when an admin user is logged in -->
+          <div class="user-info">
+            <mat-icon class="icon">admin_panel_settings</mat-icon>
+            <span class="username">Hi, Admin</span>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+
+  <span class="spacer"></span>
+
+  <!-- Responsive collapsible menu -->
+  <mat-menu #menu="matMenu">
+    <ng-container *ngIf="!isLoggedIn">
+      <!-- Displayed when no user is logged in -->
+      <button mat-menu-item routerLink="/auth">
+        <mat-icon class="icon">login</mat-icon>
+        Login/SignUp
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && !isAdmin">
+      <!-- Displayed when a regular user is logged in -->
+      <button mat-menu-item routerLink="">
+        <mat-icon class="icon">home</mat-icon>
+        Home
+      </button>
+      <button mat-menu-item routerLink="/user-dashboard">
+        <mat-icon class="icon">dashboard</mat-icon>
+        Dashboard
+      </button>
+      <button mat-menu-item routerLink="/add-product">
+        <mat-icon class="icon">add_shopping_cart</mat-icon>
+        Request review
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon class="icon">logout</mat-icon>
+        Logout
+      </button>
+    </ng-container>
+    <ng-container *ngIf="isLoggedIn && isAdmin">
+      <!-- Displayed when an admin user is logged in -->
+      <button mat-menu-item routerLink="">
+        <mat-icon class="icon">home</mat-icon>
+        Home
+      </button>
+      <button mat-menu-item routerLink="/admin-dashboard">
+        <mat-icon class="icon">dashboard</mat-icon>
+        Dashboard
+      </button>
+      
+      <button mat-menu-item routerLink="/add-product">
+        <mat-icon class="icon">add_shopping_cart</mat-icon>
+        Add Product
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon class="icon">logout</mat-icon>
+        Logout
+      </button>
+    </ng-container>
+  </mat-menu>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="responsive-menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

@@ -1,0 +1,124 @@
+.mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #001e14;
+    padding: 10px;
+    color: #EAE7B1;
+    font-size: 24px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .mat-toolbar:hover {
+    background-color: #005743; /* Customize the background color on hover */
+  }
+  
+  .mat-toolbar .cool-icon-text {
+    flex: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .mat-toolbar .cool-icon-text:hover {
+    transform: scale(1.1); /* Customize the scale transform on hover */
+  }
+  
+  .mat-toolbar .cool-icon-text .cool-icon {
+    margin-right: 5px;
+    font-size: 24px;
+    color: #ffab00;
+  }
+  
+  .mat-toolbar .cool-icon-text .cool-text {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .login-button,
+  .signup-button {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #EAE7B1;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transition for transform */
+    margin-right: 10px;
+    background-color: transparent;
+  }
+  
+  .login-button:hover,
+  .signup-button:hover {
+    background-color: #6096B4;
+    transform: scale(1.1); /* Customize the scale transform on hover */
+  }
+  
+  .content h3 {
+    margin-left: 5px;
+    margin-right: 12px;
+  }
+  
+  .icon-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+  
+  .left {
+    text-align: left;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-right: 8px;
+  }
+  
+  .username {
+    font-size: 16px;
+    color: #EAE7B1;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .mat-toolbar {
+      font-size: 20px;
+    }
+  
+    .login-button,
+    .signup-button {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .mat-toolbar {
+      font-size: 16px;
+    }
+  
+    .user-info {
+      justify-content: center;
+    }
+  }
+  

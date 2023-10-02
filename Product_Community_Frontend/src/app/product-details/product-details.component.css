@@ -1,0 +1,217 @@
+.container {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  margin: 20px;
+  margin-top: 6%;
+  padding: 20px;
+}
+
+.product-details {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-details h2 {
+  color: #333333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  color: #666666;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.approved-reviews {
+  margin-top: 20px;
+}
+
+.approved-reviews h3 {
+  color: #333333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.approved-reviews p {
+  color: #666666;
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.add-review {
+  margin-top: 20px;
+}
+
+.add-review h3 {
+  color: #333333;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.add-review textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+  resize: vertical;
+}
+
+.add-review input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.add-review button {
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.approved-reviews {
+  margin-top: 20px;
+}
+
+.review-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url(/assets/images/star_empty.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-right: 2px;
+}
+
+.star.full {
+  background-image: url(/assets/images/star_filled.png);
+}
+
+
+/* Add necessary toastr styles */
+.toast-success {
+  background-color: #51A351 !important;
+}
+
+.toast-error {
+  background-color: #BD362F !important;
+}
+
+.toast-info {
+  background-color: #2F96B4 !important;
+}
+
+
+/* Responsive Styles */
+
+
+@media only screen and (max-width: 330px) {
+  .container {
+    margin: 10px;
+    margin-top: 23%;
+    padding: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: 10px;
+    margin-top: 15%;
+    padding: 10px;
+  }
+
+  .product-details {
+    padding: 10px;
+  }
+
+  .product-details h2 {
+    font-size: 20px;
+  }
+
+  .product-details p {
+    font-size: 14px;
+  }
+
+  .approved-reviews h3 {
+    font-size: 18px;
+  }
+
+  .approved-reviews p {
+    font-size: 14px;
+  }
+
+  .add-review h3 {
+    font-size: 18px;
+  }
+
+  .add-review textarea,
+  .add-review input[type="number"] {
+    font-size: 14px;
+  }
+
+  .add-review button,
+  .buttons button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .review-item {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+
+  .error-message {
+    font-size: 12px;
+  }
+}

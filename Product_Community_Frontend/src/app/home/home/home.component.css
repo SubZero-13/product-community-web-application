@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  padding: 20px;
+  background-image: url("https://images.unsplash.com/photo-1617821620536-765f8849c87c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  background-image: url("https://images.unsplash.com/photo-1444837881208-4d46d5c1f127?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1345&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #3C6255;
+  height: 10%;
+  width: 50%;
+  font-weight: bold;
+  background-color: rgba(250, 235, 215, 0.8);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.content:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.content h3 {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 5px;
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 10px;
+  font-size: 24px;
+}
+
+.description {
+  text-align: center;
+  margin-top: 15%;
+  color: #000000;
+  transition: transform 0.3s, opacity 0.3s;
+
+}
+
+.description:hover {
+  opacity: 0.7;
+  transform: scale(0.9);
+
+}
+
+
+.description h2 {
+  color: #000;
+  font-family: cursive;
+}
+
+.description p {
+  color: #000;
+}
+
+@media only screen and (max-width: 1024px) {
+  .content {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .content {
+    margin-top: 30%;
+    width: 90%;
+  }
+  .description {
+    margin-top: 30%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40%;
+    height: 15%;
+    width: 90%;
+  }
+  .description {
+    margin-top: 40%;
+  }
+}
